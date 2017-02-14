@@ -5,7 +5,7 @@
   <groupId>org.codelikethewind</groupId>
   <artifactId>simple-ejb-project</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <packaging>ejb</packaging>
 
   <name>simple-ejb-project</name>
   <url>http://maven.apache.org</url>
@@ -26,5 +26,22 @@
     	<artifactId>jboss-ejb-api_3.1_spec</artifactId>
     	<version>1.0.2.Final-redhat-3</version>
     </dependency>
+    <dependency>
+    	<groupId>org.jboss.spec.javax.servlet</groupId>
+    	<artifactId>jboss-servlet-api_3.0_spec</artifactId>
+    	<version>1.0.2.Final-redhat-2</version>
+    </dependency>
   </dependencies>
+  
+  <build>
+  <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-ejb-plugin</artifactId>
+        <configuration>
+            <ejbVersion>3.0</ejbVersion>
+        </configuration>
+    </plugin>
+  </plugins>
+</build>
 </project>
