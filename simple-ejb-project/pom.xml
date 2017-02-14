@@ -21,5 +21,10 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.jboss.spec.javax.ejb</groupId>
+    	<artifactId>jboss-ejb-api_3.1_spec</artifactId>
+    	<version>1.0.2.Final-redhat-3</version>
+    </dependency>
   </dependencies>
 </project>
