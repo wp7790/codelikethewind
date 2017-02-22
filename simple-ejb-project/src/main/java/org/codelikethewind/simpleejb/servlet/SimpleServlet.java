@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.codelikethewind.simpleejb.MyEJB;
+import org.codelikethewind.simpleejb.ejb.MyEJB;
 
 @SuppressWarnings("serial")
 @WebServlet("/SimpleEJB")

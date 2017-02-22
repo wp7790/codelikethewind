@@ -1,4 +1,4 @@
-package org.codelikethewind.simpleejb;
+package org.codelikethewind.simpleejb.ejb;
 
 import javax.ejb.Stateless;
 
