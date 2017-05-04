@@ -2,10 +2,6 @@ package org.codelikethewind.data;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
-
-@XmlRootElement(name = "org.codelikethewind.data.CreditReport")
 public class CreditReport implements Serializable {
 
 	/**
@@ -23,7 +19,6 @@ public class CreditReport implements Serializable {
 	/**
 	 * @return the fullname
 	 */
-	@XmlElement
 	public String getFullname() {
 		return fullname;
 	}
@@ -36,7 +31,6 @@ public class CreditReport implements Serializable {
 	/**
 	 * @return the ssn
 	 */
-	@XmlElement
 	public String getSsn() {
 		return ssn;
 	}
@@ -49,7 +43,6 @@ public class CreditReport implements Serializable {
 	/**
 	 * @return the creditScore
 	 */
-	@XmlElement
 	public Integer getCreditScore() {
 		return creditScore;
 	}

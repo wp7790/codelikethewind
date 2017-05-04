@@ -1,5 +1,7 @@
 package org.codelikethewind.rest;
 
+import java.util.Random;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -12,15 +14,18 @@ public class CreditReportService {
 
 	@GET
 	@Path("/get")
-	@Produces("application/xml")
+	@Produces("application/json")
 	public CreditReport getCreditReport(
 			@QueryParam("fullname") String fullname, 
 			@QueryParam("ssn") String ssn){
 		
 		CreditReport creditReport = new CreditReport();
-		creditReport.setFullname("TiOluwa Olarewaju");
-		creditReport.setCreditScore(new Integer(500));
-		creditReport.setSsn("609223403");
+		creditReport.setFullname(fullname);
+		creditReport.setSsn(ssn);
+		
+		Random rand = new Random();
+	    int randomCreditScore = rand.nextInt((700 - 400) + 1) + 400;
+		creditReport.setCreditScore(new Integer(randomCreditScore));
 		
 		return creditReport;
 	}
