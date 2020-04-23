@@ -1,0 +1,3 @@
+<jboss-web>
+    <context-root>embedded-process-workitemhandler</context-root>
+</jboss-web>
