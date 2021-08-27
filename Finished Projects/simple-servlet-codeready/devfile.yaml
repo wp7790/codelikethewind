@@ -2,7 +2,7 @@ apiVersion: 1.0.0
 metadata:
   generateName: java-eap-maven-
 projects:
-  - name: simple-servlet-codeready
+  - name: codelikethewind
     source:
       type: git
       location: 'https://github.com/tolarewaju3/codelikethewind.git'
@@ -22,7 +22,7 @@ components:
     memoryLimit: 1024Mi
     endpoints:
       - attributes:
-          path: /index.html
+          path: /
         name: eap
         port: 8080
       - attributes:
@@ -36,7 +36,7 @@ components:
 commands:
   - name: 1. Build
     actions:
-      - workdir: '${CHE_PROJECTS_ROOT}/simple-servlet-codeready'
+      - workdir: '${CHE_PROJECTS_ROOT}/codelikethewind/Finished\\ Projects/simple-servlet-codeready'
         type: exec
         command: scl enable rh-maven35 'mvn clean install'
         component: maven
@@ -51,13 +51,13 @@ commands:
       - type: exec
         component: maven
         command: 'cp target/*.war /opt/eap/standalone/deployments/ROOT.war && echo ''Archive was deployed, click on eap endpoint from Workspace view to open the application'''
-        workdir: '${CHE_PROJECTS_ROOT}/simple-servlet-codeready'
+        workdir: '${CHE_PROJECTS_ROOT}/codelikethewind/Finished\\ Projects/simple-servlet-codeready'
   - name: 4. Hot update
     actions:
       - type: exec
         component: maven
         command: scl enable rh-maven35 'mvn clean install' && sleep 2 && cp target/*.war /opt/eap/standalone/deployments/ROOT.war
-        workdir: '${CHE_PROJECTS_ROOT}/simple-servlet-codeready'
+        workdir: '${CHE_PROJECTS_ROOT}/codelikethewind/Finished\\ Projects/simple-servlet-codeready'
   - name: Debug (Attach)
     actions:
       - type: vscode-launch
