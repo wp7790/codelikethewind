@@ -6,7 +6,7 @@ projects:
     source:
       type: git
       location: 'https://github.com/tolarewaju3/codelikethewind.git'
-      branch: codeready
+      branch: codeready-bug
 components:
   - type: chePlugin
     id: redhat/java8/latest
