@@ -47,7 +47,7 @@ commands:
         type: exec
         command: './jboss-cli.sh --connect --command="data-source add --name=ExampleDS --jndi-name=java:jboss/datasources/ExampleDS --driver-name=h2 --connection-url=jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE --user-name=sa --password=sa" && echo ''Server was configured'''
         component: maven
-  - name: 3. Copy war
+  - name: 3. Deploy
     actions:
       - type: exec
         component: maven
