@@ -1,0 +1,2 @@
+[webservers]
+apache ansible_connection=docker

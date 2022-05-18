@@ -1,0 +1,65 @@
+---
+- name: Configure Apache Web Server
+  hosts: webservers
+  vars:
+    apache_user: apache
+    apache_group: apache
+  tasks:
+    - name: Check if HTTPD Service Exists
+      stat: path=/etc/httpd
+      register: service_status
+
+    - name: Ensure HTTPD service is stopped
+      when: service_status.stat.exists
+      service:
+        name: httpd
+        state: stopped
+
+    - name: Create Apache Group
+      group:
+        name: "{{ apache_group }}"
+        system: yes
+        state: present
+        gid: "48"
+
+    - name: Create Apache User
+      user:
+        name: "{{ apache_user }}"
+        comment: "Apache User"
+        uid: "48"
+        group: "{{ apache_group }}"
+        state: present
+
+    - name: Install HTTPD & Helpful Tools
+      dnf:
+        name: httpd, unzip, wget
+        state: present
+
+    - name: Unarchive mod cluster
+      unarchive:
+        src: https://github.com/modcluster/mod_cluster/releases/download/1.3.1.Final/mod_cluster-1.3.1.Final-linux2-x64-so.tar.gz
+        dest: /etc/httpd/modules
+        remote_src: yes
+
+    - name: Copy Mod Cluster Config
+      copy:
+        src: "mod_cluster.conf"
+        dest: "/etc/httpd/conf.d/"
+
+    - name: Remove Proxy Balancer Module
+      lineinfile:
+        state: present
+        path: "/etc/httpd/conf.modules.d/00-proxy.conf"
+        regexp: "LoadModule proxy_balancer_module modules/mod_proxy_balancer.so"
+        line: "#LoadModule proxy_balancer_module modules/mod_proxy_balancer.so"
+
+    - name: Enable HTTPD
+      service:
+        name: httpd
+        enabled: yes
+
+    - name: Start HTTPD
+      service:
+        name: httpd
+        state: started
+    
